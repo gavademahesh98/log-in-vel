@@ -1,0 +1,51 @@
+pipeline{
+
+    agent any
+
+    stages{
+
+
+        stage('git checkout'){
+
+            steps{
+
+                git branch: 'master',
+                url: 'https://github.com/gavademahesh98/log-in-vel.git'
+            }
+        }
+
+        stage('Build'){
+
+            steps{
+
+            sh  'docker build -t maheshg98/mylogin:v1 .'
+                    
+             }
+        }
+        stage('push-image'){
+            steps{
+
+            sh """
+                  docker login -u maheshg98 -p Mahesh@8798
+                  docker push maheshg98/mylogin:v1 .
+            """
+            }
+        }
+        stage('deployment'){
+
+            steps{
+                sh """
+                    docker pull maheshg98/mylogin:v1
+                    docker run -itd -p 4545:8080 --name login-app-v1 maheshg98/mylogin:v1
+
+                """
+            }
+        }
+
+
+
+
+
+
+    }
+}
