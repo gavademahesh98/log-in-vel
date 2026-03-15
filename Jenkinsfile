@@ -27,7 +27,7 @@ pipeline{
 
             sh """
                   docker login -u maheshg98 -p Mahesh@8798
-                  docker push maheshg98/mylogin:v1 .
+                  docker push maheshg98/mylogin:v1
             """
             }
         }
