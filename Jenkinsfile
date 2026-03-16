@@ -44,6 +44,9 @@ pipeline{
                     | tail -n +4 \
                     | xargs -r docker rmi
 
+                    # create SQl database container and run
+                    docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=test -p 3000:3306 mysql:latest
+
                 """
             }
         }
