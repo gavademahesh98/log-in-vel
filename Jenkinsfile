@@ -40,7 +40,9 @@ pipeline{
                     docker container rm login-app || true
                     docker run -itd -p 4545:8080 --name login-app maheshg98/mylogin:${BUILD_NUMBER}
                     
-                    
+                    docker images maheshg98/mylogin --format "{{.Repository}}:{{.Tag}}" \
+                    | tail -n +4 \
+                    | xargs -r docker rmi
 
                 """
             }
