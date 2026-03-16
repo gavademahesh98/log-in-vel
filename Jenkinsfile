@@ -18,7 +18,7 @@ pipeline{
 
             steps{
 
-            sh  'docker build -t maheshg98/mylogin:v1 .'
+            sh  'docker build -t maheshg98/mylogin:${BUILD_NUMBER} .'
                     
              }
         }
