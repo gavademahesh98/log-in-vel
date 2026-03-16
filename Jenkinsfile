@@ -40,6 +40,7 @@ pipeline{
                     docker container rm login-app || true
                     docker run -itd -p 4545:8080 --name login-app maheshg98/mylogin:${BUILD_NUMBER}
                     
+                    
 
                 """
             }
