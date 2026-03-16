@@ -36,8 +36,8 @@ pipeline{
             steps{
                 sh """
                     docker pull maheshg98/mylogin:${BUILD_NUMBER}
-                    docker kill login-app
-                    docker container rm login-app
+                    docker kill login-app || true
+                    docker container rm login-app || true
                     docker run -itd -p 4545:8080 --name login-app maheshg98/mylogin:${BUILD_NUMBER}
                     docker rmi maheshg98/mylogin:${BUILD_NUMBER}
 
