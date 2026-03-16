@@ -27,7 +27,7 @@ pipeline{
 
             sh """
                   docker login -u maheshg98 -p Mahesh@8798
-                  docker push maheshg98/mylogin:v1
+                  docker push maheshg98/mylogin:${BUILD_NUMBER}
             """
             }
         }
@@ -35,8 +35,8 @@ pipeline{
 
             steps{
                 sh """
-                    docker pull maheshg98/mylogin:v1
-                    docker run -itd -p 4545:8080 --name login-app-v1 maheshg98/mylogin:v1
+                    docker pull maheshg98/mylogin:${BUILD_NUMBER}
+                    docker run -itd -p 4545:8080 --name login-app-v1 maheshg98/mylogin:${BUILD_NUMBER}
 
                 """
             }
